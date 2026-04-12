@@ -79,3 +79,10 @@ create table bronze.erp_cust_az12 (
     bdate   date,
     gen     varchar(10)
 );
+
+
+drop table if exists bronze.erp_loc_a101;
+create table bronze.erp_loc_a101 (
+    cid     varchar(50),
+    cntry   varchar(50)
+);
