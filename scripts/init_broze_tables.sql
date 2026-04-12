@@ -41,3 +41,15 @@ create table bronze.crm_cust_info (
     cst_gndr            varchar(50),
     cst_create_date     date
 );
+
+
+drop table if exists bronze.crm_prd_info;
+create table bronze.crm_prd_info (
+    prd_id          int,
+    prd_key         varchar(50),
+    prd_nm          varchar(100),
+    prd_cost        numeric(10,2),
+    prd_line        varchar(10),
+    prd_start_dt    date,
+    prd_end_dt      date
+);
