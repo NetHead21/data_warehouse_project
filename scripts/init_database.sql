@@ -21,3 +21,16 @@ Warning:
 -- Step 1: Run this while connected to the 'postgres' database
 drop database if exists data_warehouse;
 create database data_warehouse;
+
+
+-- =====================================================
+-- IMPORTANT: Before running Step 2, switch your
+-- connection to the 'data_warehouse' database.
+-- In psql: \c data_warehouse
+-- In a GUI tool: manually change the active connection.
+-- =====================================================
+
+-- Step 2: Run this after switching to 'data_warehouse'
+create schema bronze;
+create schema silver;
+create schema gold;
