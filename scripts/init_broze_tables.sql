@@ -86,3 +86,12 @@ create table bronze.erp_loc_a101 (
     cid     varchar(50),
     cntry   varchar(50)
 );
+
+
+drop table if exists bronze.erp_px_cat_g1v2;
+create table bronze.erp_px_cat_g1v2 (
+    id          varchar(50),
+    cat         varchar(50),
+    subcat      varchar(50),
+    maintenance varchar(10)
+);
