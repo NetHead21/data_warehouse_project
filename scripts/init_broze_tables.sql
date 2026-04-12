@@ -67,3 +67,15 @@ create table bronze.crm_sales_details (
     sls_quantity    int,
     sls_price       int
 );
+
+
+-- ============================================
+-- ERP Tables
+-- ============================================
+
+drop table if exists bronze.erp_cust_az12;
+create table bronze.erp_cust_az12 (
+    cid     varchar(50),
+    bdate   date,
+    gen     varchar(10)
+);
