@@ -16,3 +16,8 @@ Warning:
     backup has been taken and data loss is acceptable.
 ===============================================
 */
+
+
+-- Step 1: Run this while connected to the 'postgres' database
+drop database if exists data_warehouse;
+create database data_warehouse;
