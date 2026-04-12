@@ -25,3 +25,19 @@ Warning:
     backup has been taken and data loss is acceptable.
 ===============================================
 */
+
+
+-- ============================================
+-- CRM Tables
+-- ============================================
+
+drop table if exists bronze.crm_cust_info;
+create table bronze.crm_cust_info (
+    cst_id              int,
+    cst_key             varchar(50),
+    cst_firstname       varchar(50),
+    cst_lastname        varchar(50),
+    cst_marital_status  varchar(50),
+    cst_gndr            varchar(50),
+    cst_create_date     date
+);
