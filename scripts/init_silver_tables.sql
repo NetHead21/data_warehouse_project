@@ -27,3 +27,19 @@ Warning:
 ===============================================
 */
 
+
+-- ============================================
+-- CRM Tables
+-- ============================================
+
+drop table if exists silver.crm_cust_info;
+create table silver.crm_cust_info (
+    cst_id              int,
+    cst_key             varchar(50),
+    cst_firstname       varchar(50),
+    cst_lastname        varchar(50),
+    cst_marital_status  varchar(50),
+    cst_gndr            varchar(50),
+    cst_create_date     date,
+    dwh_create_date     date default current_date
+);
