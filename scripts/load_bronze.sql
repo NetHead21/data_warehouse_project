@@ -36,3 +36,15 @@ DECLARE
     v_start_time  TIMESTAMP;
     v_end_time    TIMESTAMP;
     v_total_start TIMESTAMP;
+
+
+BEGIN
+    v_total_start := clock_timestamp();
+
+    RAISE NOTICE '============================================';
+    RAISE NOTICE 'Loading Bronze Layer';
+    RAISE NOTICE '============================================';
+
+    -- ============================================
+    -- Truncate All Bronze Tables
+    -- ============================================
