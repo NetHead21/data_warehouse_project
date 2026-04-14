@@ -111,3 +111,6 @@ BEGIN
         RAISE NOTICE 'bronze.crm_sales_details loaded successfully. Rows: % | Duration: %',
             (SELECT COUNT(*) FROM bronze.crm_sales_details),
             v_end_time - v_start_time;
+    EXCEPTION WHEN OTHERS THEN
+        RAISE EXCEPTION 'Failed to load bronze.crm_sales_details: %', SQLERRM;
+    END;
