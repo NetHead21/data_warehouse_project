@@ -78,3 +78,7 @@ BEGIN
         RAISE NOTICE 'bronze.crm_cust_info loaded successfully. Rows: % | Duration: %',
             (SELECT COUNT(*) FROM bronze.crm_cust_info),
             v_end_time - v_start_time;
+
+    EXCEPTION WHEN OTHERS THEN
+        RAISE EXCEPTION 'Failed to load bronze.crm_cust_info: %', SQLERRM;
+    END;
