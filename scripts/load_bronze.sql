@@ -179,3 +179,7 @@ BEGIN
     RAISE NOTICE '============================================';
 END;
 $$;
+
+
+-- To execute the procedure run:
+CALL bronze.load_bronze();
