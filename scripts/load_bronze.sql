@@ -155,3 +155,16 @@ BEGIN
     EXCEPTION WHEN OTHERS THEN
         RAISE EXCEPTION 'Failed to load bronze.erp_loc_a101: %', SQLERRM;
     END;
+
+
+    BEGIN
+        v_start_time := clock_timestamp();
+        RAISE NOTICE 'Loading bronze.erp_px_cat_g1v2...';
+        COPY bronze.erp_px_cat_g1v2
+        FROM 'C:/DataEngineeringProject/data_warehouse_project/datasets/source_erp/PX_CAT_G1V2.csv'
+        DELIMITER ','
+        CSV HEADER;
+        v_end_time := clock_timestamp();
+        RAISE NOTICE 'bronze.erp_px_cat_g1v2 loaded successfully. Rows: % | Duration: %',
+            (SELECT COUNT(*) FROM bronze.erp_px_cat_g1v2),
+            v_end_time - v_start_time;
