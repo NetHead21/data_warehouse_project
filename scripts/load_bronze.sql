@@ -62,3 +62,19 @@ BEGIN
     -- ============================================
     -- CRM Tables
     -- ============================================
+
+    RAISE NOTICE '--------------------------------------------';
+    RAISE NOTICE 'Loading CRM Tables';
+    RAISE NOTICE '--------------------------------------------';
+
+    BEGIN
+        v_start_time := clock_timestamp();
+        RAISE NOTICE 'Loading bronze.crm_cust_info...';
+        COPY bronze.crm_cust_info
+        FROM 'C:/DataEngineeringProject/data_warehouse_project/datasets/source_crm/cust_info.csv'
+        DELIMITER ','
+        CSV HEADER;
+        v_end_time := clock_timestamp();
+        RAISE NOTICE 'bronze.crm_cust_info loaded successfully. Rows: % | Duration: %',
+            (SELECT COUNT(*) FROM bronze.crm_cust_info),
+            v_end_time - v_start_time;
