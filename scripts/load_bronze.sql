@@ -152,3 +152,6 @@ BEGIN
         RAISE NOTICE 'bronze.erp_loc_a101 loaded successfully. Rows: % | Duration: %',
             (SELECT COUNT(*) FROM bronze.erp_loc_a101),
             v_end_time - v_start_time;
+    EXCEPTION WHEN OTHERS THEN
+        RAISE EXCEPTION 'Failed to load bronze.erp_loc_a101: %', SQLERRM;
+    END;
