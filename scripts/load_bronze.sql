@@ -114,3 +114,12 @@ BEGIN
     EXCEPTION WHEN OTHERS THEN
         RAISE EXCEPTION 'Failed to load bronze.crm_sales_details: %', SQLERRM;
     END;
+
+
+    -- ============================================
+    -- ERP Tables
+    -- ============================================
+
+    RAISE NOTICE '--------------------------------------------';
+    RAISE NOTICE 'Loading ERP Tables';
+    RAISE NOTICE '--------------------------------------------';
