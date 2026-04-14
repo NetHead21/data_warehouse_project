@@ -140,3 +140,15 @@ BEGIN
         RAISE EXCEPTION 'Failed to load bronze.erp_cust_az12: %', SQLERRM;
     END;
 
+
+    BEGIN
+        v_start_time := clock_timestamp();
+        RAISE NOTICE 'Loading bronze.erp_loc_a101...';
+        COPY bronze.erp_loc_a101
+        FROM 'C:/DataEngineeringProject/data_warehouse_project/datasets/source_erp/LOC_A101.csv'
+        DELIMITER ','
+        CSV HEADER;
+        v_end_time := clock_timestamp();
+        RAISE NOTICE 'bronze.erp_loc_a101 loaded successfully. Rows: % | Duration: %',
+            (SELECT COUNT(*) FROM bronze.erp_loc_a101),
+            v_end_time - v_start_time;
