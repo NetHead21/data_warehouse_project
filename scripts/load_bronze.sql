@@ -168,3 +168,6 @@ BEGIN
         RAISE NOTICE 'bronze.erp_px_cat_g1v2 loaded successfully. Rows: % | Duration: %',
             (SELECT COUNT(*) FROM bronze.erp_px_cat_g1v2),
             v_end_time - v_start_time;
+    EXCEPTION WHEN OTHERS THEN
+        RAISE EXCEPTION 'Failed to load bronze.erp_px_cat_g1v2: %', SQLERRM;
+    END;
