@@ -98,3 +98,16 @@ BEGIN
     EXCEPTION WHEN OTHERS THEN
         RAISE EXCEPTION 'Failed to load bronze.crm_prd_info: %', SQLERRM;
     END;
+
+
+    BEGIN
+        v_start_time := clock_timestamp();
+        RAISE NOTICE 'Loading bronze.crm_sales_details...';
+        COPY bronze.crm_sales_details
+        FROM 'C:/DataEngineeringProject/data_warehouse_project/datasets/source_crm/sales_details.csv'
+        DELIMITER ','
+        CSV HEADER;
+        v_end_time := clock_timestamp();
+        RAISE NOTICE 'bronze.crm_sales_details loaded successfully. Rows: % | Duration: %',
+            (SELECT COUNT(*) FROM bronze.crm_sales_details),
+            v_end_time - v_start_time;
