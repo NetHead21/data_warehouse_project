@@ -123,3 +123,16 @@ BEGIN
     RAISE NOTICE '--------------------------------------------';
     RAISE NOTICE 'Loading ERP Tables';
     RAISE NOTICE '--------------------------------------------';
+
+
+    BEGIN
+        v_start_time := clock_timestamp();
+        RAISE NOTICE 'Loading bronze.erp_cust_az12...';
+        COPY bronze.erp_cust_az12
+        FROM 'C:/DataEngineeringProject/data_warehouse_project/datasets/source_erp/CUST_AZ12.csv'
+        DELIMITER ','
+        CSV HEADER;
+        v_end_time := clock_timestamp();
+        RAISE NOTICE 'bronze.erp_cust_az12 loaded successfully. Rows: % | Duration: %',
+            (SELECT COUNT(*) FROM bronze.erp_cust_az12),
+            v_end_time - v_start_time;
