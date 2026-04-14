@@ -27,3 +27,12 @@ Warning:
       differs.
 ===============================================
 */
+
+
+CREATE OR REPLACE PROCEDURE bronze.load_bronze()
+LANGUAGE plpgsql
+AS $$
+DECLARE
+    v_start_time  TIMESTAMP;
+    v_end_time    TIMESTAMP;
+    v_total_start TIMESTAMP;
