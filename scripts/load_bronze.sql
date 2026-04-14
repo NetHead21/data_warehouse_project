@@ -171,3 +171,11 @@ BEGIN
     EXCEPTION WHEN OTHERS THEN
         RAISE EXCEPTION 'Failed to load bronze.erp_px_cat_g1v2: %', SQLERRM;
     END;
+
+
+    RAISE NOTICE '============================================';
+    RAISE NOTICE 'Bronze Layer Loaded Successfully';
+    RAISE NOTICE 'Total Duration: %', clock_timestamp() - v_total_start;
+    RAISE NOTICE '============================================';
+END;
+$$;
