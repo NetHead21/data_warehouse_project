@@ -1,0 +1,29 @@
+/*
+===============================================
+Silver Layer - Table Initialization
+===============================================
+Script Purpose:
+    This script creates the cleaned and transformed tables in the silver schema.
+    Each table represents a refined version of its bronze counterpart, with
+    data quality improvements, standardization, and the addition of audit
+    metadata columns.
+
+    Tables created:
+        CRM Source (source_crm):
+            - silver.crm_cust_info      : Customer information
+            - silver.crm_prd_info       : Product information
+            - silver.crm_sales_details  : Sales transactions
+
+        ERP Source (source_erp):
+            - silver.erp_cust_az12      : Customer birthdates and gender
+            - silver.erp_loc_a101       : Customer locations and countries
+            - silver.erp_px_cat_g1v2    : Product categories and subcategories
+
+Warning:
+    This script drops and recreates all silver tables on each run.
+    All existing data in these tables will be permanently deleted.
+    Do NOT run this script in a production environment unless a full
+    backup has been taken and data loss is acceptable.
+===============================================
+*/
+
