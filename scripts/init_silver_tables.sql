@@ -57,3 +57,18 @@ create table silver.crm_prd_info (
     prd_end_dt      date,
     dwh_create_date date default current_date
 );
+
+
+drop table if exists silver.crm_sales_details;
+create table silver.crm_sales_details (
+    sls_ord_num     varchar(50),
+    sls_prd_key     varchar(50),
+    sls_cust_id     int,
+    sls_order_dt    date,
+    sls_ship_dt     date,
+    sls_due_dt      date,
+    sls_sales       int,
+    sls_quantity    int,
+    sls_price       int,
+    dwh_create_date date default current_date
+);
