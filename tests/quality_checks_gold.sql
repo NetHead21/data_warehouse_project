@@ -55,3 +55,13 @@ SELECT 'dim_customers - Null customer_key or customer_id' AS check_name,
 FROM gold.dim_customers
 WHERE customer_key IS NULL
    OR customer_id IS NULL;
+
+
+-- Check 3: Invalid gender values
+-- Expectation: No results (only 'Male', 'Female', 'n/a' allowed)
+SELECT 'dim_customers - Invalid gender value' AS check_name,
+       gender,
+       COUNT(*)                               AS record_count
+FROM gold.dim_customers
+WHERE gender NOT IN ('Male', 'Female', 'n/a')
+GROUP BY gender;
