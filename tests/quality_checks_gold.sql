@@ -46,3 +46,12 @@ SELECT 'dim_customers - Duplicate customer_key' AS check_name,
 FROM gold.dim_customers
 GROUP BY customer_key
 HAVING COUNT(*) > 1;
+
+
+-- Check 2: Nulls in critical columns
+-- Expectation: No results (no nulls in key columns)
+SELECT 'dim_customers - Null customer_key or customer_id' AS check_name,
+       *
+FROM gold.dim_customers
+WHERE customer_key IS NULL
+   OR customer_id IS NULL;
