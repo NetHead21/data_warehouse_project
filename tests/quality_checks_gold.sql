@@ -32,3 +32,17 @@ Warning:
     - Investigate any rows returned by these checks before proceeding.
 ===============================================
 */
+
+
+-- ============================================
+-- dim_customers Checks
+-- ============================================
+
+-- Check 1: Uniqueness of customer_key
+-- Expectation: No results (no duplicate customer keys)
+SELECT 'dim_customers - Duplicate customer_key' AS check_name,
+       customer_key,
+       COUNT(*)                                  AS duplicate_count
+FROM gold.dim_customers
+GROUP BY customer_key
+HAVING COUNT(*) > 1;
