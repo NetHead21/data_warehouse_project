@@ -65,3 +65,13 @@ SELECT 'dim_customers - Invalid gender value' AS check_name,
 FROM gold.dim_customers
 WHERE gender NOT IN ('Male', 'Female', 'n/a')
 GROUP BY gender;
+
+
+-- Check 4: Invalid marital_status values
+-- Expectation: No results (only 'Married', 'Single', 'n/a' allowed)
+SELECT 'dim_customers - Invalid marital_status value' AS check_name,
+       marital_status,
+       COUNT(*)                                       AS record_count
+FROM gold.dim_customers
+WHERE marital_status NOT IN ('Married', 'Single', 'n/a')
+GROUP BY marital_status;
