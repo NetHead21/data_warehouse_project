@@ -43,3 +43,17 @@ create table silver.crm_cust_info (
     cst_create_date     date,
     dwh_create_date     date default current_date
 );
+
+
+drop table if exists silver.crm_prd_info;
+create table silver.crm_prd_info (
+    prd_id          int,
+    cat_id          varchar(50),
+    prd_key         varchar(50),
+    prd_nm          varchar(100),
+    prd_cost        numeric(10,2),
+    prd_line        varchar(50),
+    prd_start_dt    date,
+    prd_end_dt      date,
+    dwh_create_date date default current_date
+);
