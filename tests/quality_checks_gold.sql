@@ -89,3 +89,12 @@ SELECT 'dim_products - Duplicate product_key' AS check_name,
 FROM gold.dim_products
 GROUP BY product_key
 HAVING COUNT(*) > 1;
+
+
+-- Check 6: Nulls in critical columns
+-- Expectation: No results (no nulls in key columns)
+SELECT 'dim_products - Null product_key or product_id' AS check_name,
+       *
+FROM gold.dim_products
+WHERE product_key IS NULL
+   OR product_id IS NULL;
