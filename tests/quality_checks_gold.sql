@@ -130,3 +130,13 @@ SELECT 'fact_sales - Orphaned customer_key' AS check_name,
 FROM gold.fact_sales f
 LEFT JOIN gold.dim_customers c ON c.customer_key = f.customer_key
 WHERE c.customer_key IS NULL;
+
+
+-- Check 10: Nulls in key columns
+-- Expectation: No results (order_number, customer_key, product_key must not be null)
+SELECT 'fact_sales - Null key columns' AS check_name,
+       *
+FROM gold.fact_sales
+WHERE order_number IS NULL
+   OR customer_key IS NULL
+   OR product_key IS NULL;
