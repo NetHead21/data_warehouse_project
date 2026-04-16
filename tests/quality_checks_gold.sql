@@ -98,3 +98,13 @@ SELECT 'dim_products - Null product_key or product_id' AS check_name,
 FROM gold.dim_products
 WHERE product_key IS NULL
    OR product_id IS NULL;
+
+
+-- Check 7: Invalid product_line values
+-- Expectation: No results (only known product lines allowed)
+SELECT 'dim_products - Invalid product_line value' AS check_name,
+       product_line,
+       COUNT(*)                                    AS record_count
+FROM gold.dim_products
+WHERE product_line NOT IN ('Mountain', 'Road', 'Other Sales', 'Touring', 'n/a')
+GROUP BY product_line;
