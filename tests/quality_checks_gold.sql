@@ -121,3 +121,12 @@ SELECT 'fact_sales - Orphaned product_key' AS check_name,
 FROM gold.fact_sales f
 LEFT JOIN gold.dim_products p ON p.product_key = f.product_key
 WHERE p.product_key IS NULL;
+
+
+-- Check 9: Referential integrity - orphaned customer keys
+-- Expectation: No results (every sale must link to a valid customer)
+SELECT 'fact_sales - Orphaned customer_key' AS check_name,
+       f.*
+FROM gold.fact_sales f
+LEFT JOIN gold.dim_customers c ON c.customer_key = f.customer_key
+WHERE c.customer_key IS NULL;
