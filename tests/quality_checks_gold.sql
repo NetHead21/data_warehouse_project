@@ -75,3 +75,17 @@ SELECT 'dim_customers - Invalid marital_status value' AS check_name,
 FROM gold.dim_customers
 WHERE marital_status NOT IN ('Married', 'Single', 'n/a')
 GROUP BY marital_status;
+
+
+-- ============================================
+-- dim_products Checks
+-- ============================================
+
+-- Check 5: Uniqueness of product_key
+-- Expectation: No results (no duplicate product keys)
+SELECT 'dim_products - Duplicate product_key' AS check_name,
+       product_key,
+       COUNT(*)                               AS duplicate_count
+FROM gold.dim_products
+GROUP BY product_key
+HAVING COUNT(*) > 1;
