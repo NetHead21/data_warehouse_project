@@ -108,3 +108,16 @@ SELECT 'dim_products - Invalid product_line value' AS check_name,
 FROM gold.dim_products
 WHERE product_line NOT IN ('Mountain', 'Road', 'Other Sales', 'Touring', 'n/a')
 GROUP BY product_line;
+
+
+-- ============================================
+-- fact_sales Checks
+-- ============================================
+
+-- Check 8: Referential integrity - orphaned product keys
+-- Expectation: No results (every sale must link to a valid product)
+SELECT 'fact_sales - Orphaned product_key' AS check_name,
+       f.*
+FROM gold.fact_sales f
+LEFT JOIN gold.dim_products p ON p.product_key = f.product_key
+WHERE p.product_key IS NULL;
