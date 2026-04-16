@@ -72,3 +72,16 @@ create table silver.crm_sales_details (
     sls_price       int,
     dwh_create_date date default current_date
 );
+
+
+-- ============================================
+-- ERP Tables
+-- ============================================
+
+drop table if exists silver.erp_cust_az12;
+create table silver.erp_cust_az12 (
+    cid             varchar(50),
+    bdate           date,
+    gen             varchar(10),
+    dwh_create_date date default current_date
+);
