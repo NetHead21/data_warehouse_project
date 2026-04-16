@@ -140,3 +140,15 @@ FROM gold.fact_sales
 WHERE order_number IS NULL
    OR customer_key IS NULL
    OR product_key IS NULL;
+
+
+-- Check 11: Sales amount validation (sales = quantity * price)
+-- Expectation: No results (sales_amount must equal quantity * price)
+SELECT 'fact_sales - sales_amount != quantity * price' AS check_name,
+       order_number,
+       sales_amount,
+       quantity,
+       price,
+       quantity * price AS expected_sales_amount
+FROM gold.fact_sales
+WHERE sales_amount != quantity * price;
